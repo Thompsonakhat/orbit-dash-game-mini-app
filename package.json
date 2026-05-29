@@ -1,0 +1,29 @@
+{
+  "name": "cookmybots-telegram-miniapp-game-3d-core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "install:root": "bash -lc \"set -e; if [ -f package-lock.json ]; then npm ci; else npm install; fi\"",
+    "install:webapp": "bash -lc \"set -e; if [ -f webapp/package-lock.json ]; then npm --prefix webapp ci; else npm --prefix webapp install; fi\"",
+    "install:all": "npm run install:root && npm run install:webapp",
+    "build:webapp": "npm --prefix webapp run build",
+    "build": "npm run install:root && npm run install:webapp && npm run build:webapp",
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "dev:webapp": "npm --prefix webapp run dev"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "grammy": "^1.20.0",
+    "express": "latest",
+    "@grammyjs/runner": "^2.0.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "tsx": "^4.15.0"
+  }
+}
